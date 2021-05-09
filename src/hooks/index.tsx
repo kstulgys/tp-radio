@@ -27,9 +27,9 @@ export function useAudio({ src, config = {} }): AudioStateAndActions {
   }, [audio]);
 
   React.useEffect(() => {
-    // Stop streaming if audio.paused
-    if (audio?.paused) audio.load();
-  }, [audio?.paused]);
+    // Stop streaming if audio.paused or no audio?.volume
+    if (audio?.paused || !audio?.volume) audio.load();
+  }, [audio?.paused, audio?.volume]);
 
   const actions = {
     onTogglePlay,
