@@ -1,9 +1,5 @@
 import React, { ReactElement } from "react";
-import {
-    render as baseRender,
-    RenderOptions,
-    RenderResult,
-} from "@testing-library/react";
+import { render as baseRender, RenderOptions, RenderResult } from "@testing-library/react";
 
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "@definitions/chakra/theme";
@@ -18,21 +14,19 @@ import { QueryClient, QueryClientProvider } from "react-query";
  */
 
 export const AllTheProviders = ({ children }) => {
-    const queryClient = new QueryClient();
+  const queryClient = new QueryClient();
 
-    return (
-        <>
-            <ChakraProvider theme={theme}>
-                <QueryClientProvider client={queryClient}>
-                    {children}
-                </QueryClientProvider>
-            </ChakraProvider>
-        </>
-    );
+  return (
+    <>
+      <ChakraProvider theme={theme}>
+        <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      </ChakraProvider>
+    </>
+  );
 };
 
 const render = (ui: ReactElement, options?: Omit<RenderOptions, "queries">) =>
-    baseRender(ui, { wrapper: AllTheProviders, ...options }) as RenderResult;
+  baseRender(ui, { wrapper: AllTheProviders, ...options }) as RenderResult;
 
 // re-export everything
 export * from "@testing-library/react";
