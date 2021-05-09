@@ -18,7 +18,7 @@ export function BackgroundVideo({ songState }): JSX.Element {
   return (
     <>
       <Box
-        display={["block", "none"]}
+        display={["block", "block", "none"]}
         backgroundImage={`url(${artUrl})`}
         height="full"
         backgroundPosition="center"
@@ -29,7 +29,7 @@ export function BackgroundVideo({ songState }): JSX.Element {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         //   @ts-ignore
         ref={videoRef}
-        display={["none", "block"]}
+        display={["none", "none", "block"]}
         as="video"
         loop
         autoPlay
