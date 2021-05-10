@@ -1,6 +1,7 @@
 import React from "react";
 import { FiVolume, FiPlay, FiPause, FiVolumeX, FiVolume2 } from "react-icons/fi";
 import { Button, Stack, Text, Image, Box, Slider, SliderTrack, SliderFilledTrack, SliderThumb, Icon } from "@chakra-ui/react";
+import { isMobile } from "react-device-detect";
 
 export function AudioPlayer({ songState }) {
   return (
@@ -157,9 +158,9 @@ function useAudio() {
     audioEvents.forEach((event) => {
       audio.addEventListener(event, () => {
         if (event === "waiting") setIsLoading(true);
-        if (event === "canplay") {
-          audio.play();
+        if (event === "canplay" || event === "loadeddata") {
           setIsLoading(false);
+          audio.play();
         }
         rerender();
         console.log({ event });
