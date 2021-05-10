@@ -4,7 +4,7 @@ import { Stack, Box, Icon, Link } from "@chakra-ui/react";
 
 export function TrustPilotMenuLink() {
   return (
-    <Link position="fixed" top={[4, 10]} left={[4, 10]} isExternal href="https://www.trustpilot.com/">
+    <Link rounded="full" position="fixed" top={[4, 10]} left={[4, 10]} isExternal href="https://www.trustpilot.com/">
       <Stack
         bg="rgba(0, 0, 0, 0.5)"
         sx={{ backdropFilter: "blur(20px)" }}

@@ -7,11 +7,34 @@ export function useAudio({ src, config = {} }): AudioStateAndActions {
   const audio: HTMLMediaElement = React.useMemo(() => !!isBrowser && new Audio(src), [isBrowser]);
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
+  // React.useEffect(() => {
+  //   const togglePlayWithSpacebar = ({ keyCode }) => keyCode === 32 && onTogglePlay();
+  //   document.addEventListener("keyup", togglePlayWithSpacebar);
+  //   return () => {
+  //     document.removeEventListener("keyup", togglePlayWithSpacebar);
+  //   };
+  // }, []);
+  // function downHandler({ key }) {
+  //   if (key === targetKey) {
+  //     setKeyPressed(true);
+  //   }
+  // }
+  // // If released key is our target key then set to false
+  // const upHandler = ({ key }) => {
+  //   if (key === targetKey) {
+  //     setKeyPressed(false);
+  //   }
+  // };
+  // Add event listeners
   React.useEffect(() => {
-    const togglePlayWithSpacebar = ({ keyCode }) => keyCode === 32 && onTogglePlay();
-    document.addEventListener("keyup", togglePlayWithSpacebar);
+    const togglePlayWithSpacebar = ({ key }) => key === 32 && onTogglePlay();
+
+    window.addEventListener("keydown", togglePlayWithSpacebar);
+    window.addEventListener("keyup", togglePlayWithSpacebar);
+    // Remove event listeners on cleanup
     return () => {
-      document.removeEventListener("keyup", togglePlayWithSpacebar);
+      window.removeEventListener("keydown", togglePlayWithSpacebar);
+      window.removeEventListener("keyup", togglePlayWithSpacebar);
     };
   }, []);
 
