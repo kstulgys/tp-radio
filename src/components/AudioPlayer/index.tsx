@@ -1,5 +1,5 @@
 import React from "react";
-import { FiVolume, FiPlay, FiPause, FiVolumeX } from "react-icons/fi";
+import { FiVolume, FiPlay, FiPause, FiVolumeX, FiVolume2 } from "react-icons/fi";
 import { Button, Stack, Text, Image, Box, Slider, SliderTrack, SliderFilledTrack, SliderThumb, Icon } from "@chakra-ui/react";
 
 export function AudioPlayer({ songState }) {
@@ -56,7 +56,7 @@ function AudioPlayerControls() {
 
   const MutedIcon = React.useMemo(() => {
     if (isMuted) return FiVolumeX;
-    return FiVolume;
+    return FiVolume2;
   }, [isMuted]);
 
   return (
